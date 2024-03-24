@@ -8,18 +8,7 @@ export interface ShoeAdapter {
 
 export const createShoeAdapter = (shoeService: ShoeService): ShoeAdapter => ({
   getShoes: async () => {
-    const shoes = await shoeService.getShoes();
-    const formattedShoes = shoes.map(
-      ({ id, name, imgUrl, price, description, bgColor }) => ({
-        id,
-        shoeName: name,
-        shoePrice: price,
-        imgURL: imgUrl,
-        description,
-        bgColor,
-      })
-    );
-    return formattedShoes;
+    return [] as any;
   },
 
   getShoeById: async (shoeId: string) => {

@@ -1,18 +1,15 @@
 import { ICartItem } from "../../../context/CartProvider";
+import useCart from "../../../hooks/useCart";
 
 interface CartItemProps {
   cartItem: ICartItem;
-  onIncrementQuantity: (itemId: string) => void;
-  onDecrementQuantity: (itemId: string) => void;
-  onRemoveFromCart: (itemId: string) => void;
 }
 
 const CartItem = ({
   cartItem,
-  onIncrementQuantity,
-  onDecrementQuantity,
-  onRemoveFromCart,
 }: CartItemProps) => {
+  const { incrementQuantity, decrementQuantity, removeFromCart } = useCart();
+  
   return (
     <div className="cardItem">
       <div className="cardItem_left">
@@ -20,7 +17,7 @@ const CartItem = ({
           className="cardItem_image"
           style={{ backgroundColor: cartItem.bgColor }}
         >
-          <img alt="" src={cartItem.imgUrl} />
+          <img alt="this is shoes make by color" src={cartItem.imgUrl} />
         </div>
       </div>
       <div className="cardItem_right">
@@ -30,21 +27,21 @@ const CartItem = ({
           <div className="cartItem_count">
             <div
               className="cartItem_button"
-              onClick={() => onDecrementQuantity(cartItem.id)}
+              onClick={() => decrementQuantity(cartItem.id)}
             >
               -
             </div>
             <div className="cartItem_number">{cartItem.quantity}</div>
             <div
               className="cartItem_button"
-              onClick={() => onIncrementQuantity(cartItem.id)}
+              onClick={() => incrementQuantity(cartItem.id)}
             >
               +
             </div>
           </div>
           <div
             className="carItem_remove"
-            onClick={() => onRemoveFromCart(cartItem.id)}
+            onClick={() => removeFromCart(cartItem.id)}
           >
             <img
               alt=""

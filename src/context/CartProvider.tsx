@@ -1,8 +1,5 @@
 import { createContext, useState } from "react";
 
-interface Props {
-  children: React.ReactNode;
-}
 
 export interface ICartItem {
   id: string;
@@ -28,7 +25,7 @@ export interface ICartContext {
 
 export const CartContext = createContext<ICartContext | undefined>(undefined);
 
-const CartProvider = ({ children }: Props) => {
+const CartProvider = ({ children }: React.PropsWithChildren) => {
   const [cart, setCart] = useState<ICart>({
     items: [],
     total: 0,

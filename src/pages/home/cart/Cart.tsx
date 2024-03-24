@@ -3,8 +3,7 @@ import useCart from "../../../hooks/useCart";
 import CartItem from "./CartItem";
 
 const Cart = () => {
-  const { cart, incrementQuantity, decrementQuantity, removeFromCart } =
-    useCart();
+  const { cart } = useCart();
 
   return (
     <div className="card">
@@ -35,9 +34,6 @@ const Cart = () => {
           {cart.items.map((cartItem) => (
             <CartItem
               key={cartItem.id}
-              onIncrementQuantity={incrementQuantity}
-              onDecrementQuantity={decrementQuantity}
-              onRemoveFromCart={removeFromCart}
               cartItem={cartItem}
             />
           ))}

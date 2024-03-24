@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 
 import useCart from "../../../hooks/useCart";
 import { FormattedShoe } from "../../../dto/shoe.dto";
-import useShoeAdapter from "../../../hooks/useProductAdapter";
+
+// services
+import shoeService from '../../../services/shoes';
 
 import ShoeItem from "./ShoeItem";
 
 export const ShoeList = () => {
-  const shoeAdapter = useShoeAdapter();
   const { cart, addToCart } = useCart();
   const [shoes, setShoes] = useState<FormattedShoe[]>([]);
 
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        const shoes = await shoeAdapter.getShoes();
+        const shoes = await shoeService.getShoes();
         setShoes(shoes);
       } catch (error) {
         console.log("Error fetching shoes", error);
@@ -22,7 +23,7 @@ export const ShoeList = () => {
     };
 
     fetchShoes();
-  }, [shoeAdapter]);
+  }, []);
 
   const checkIfInCart = (id: string) => {
     return cart.items.some((item) => item.id === id);

@@ -1,6 +1,6 @@
 import AdapterProvider from "./context/AdapterProvider";
 
-import HomePage from "./pages-section/home";
+import HomePage from "./pages/home";
 
 import "./App.css";
 
